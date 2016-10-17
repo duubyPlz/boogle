@@ -80,12 +80,12 @@
   <script>
     $('#search-btn').on('click', function() {
       var returnVal = "";
-      $('div#display-text').html('&lt;loading...&gt;');
+      $('div#display-text').html('&lt;loading... (4 secs)&gt;');
 
       // input
-      var toSearch = $('#search1').val();
-      var logic = $('#logic').val();
-      var toSearch2 = $('#search2').val();
+      var toSearch = $('#search1').val().trim();
+      var logic = $('#logic').val().trim();
+      var toSearch2 = $('#search2').val().trim();
 
       // console.log(toSearch1 + " " + logic + " " + toSearch2);
 
@@ -181,7 +181,10 @@
       setTimeout(function() {
         console.log('changing returnval');
         $('#display-text').html(returnVal);
-      }, 5000);
+        if (returnVal == '') {
+          $('#display-text').html("Couldn't be found: \"" + toSearch + "\" " + logic.toUpperCase() + " \"" + toSearch2 + "\".");
+        }
+      }, 4000);
     });
 
 
