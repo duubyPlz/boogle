@@ -96,9 +96,9 @@ todo:
       var toSearch2Raw = $('#search2').val().trim().toLowerCase();
 
       // sanitise ... >_>
-      var toSearch = toSearchRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n]/, '');
-      var logic = logicRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n]/, '');
-      var toSearch2 = toSearch2Raw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n]/, '');
+      var toSearch = toSearchRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
+      var logic = logicRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
+      var toSearch2 = toSearch2Raw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
 
       // console.log("`" + toSearch + "` `" + logic + "` `" + toSearch2 + "`");
 
