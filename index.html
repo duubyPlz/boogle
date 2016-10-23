@@ -91,9 +91,9 @@ todo:
       $('div#display-text').html('&lt;loading... (max 4 secs)&gt;');
 
       // input
-      var toSearch = $('#search1').val().trim();
-      var logic = $('#logic').val().trim();
-      var toSearch2 = $('#search2').val().trim();
+      var toSearch = $('#search1').val().trim().toLowerCase();
+      var logic = $('#logic').val().trim().toLowerCase();
+      var toSearch2 = $('#search2').val().trim().toLowerCase();
 
       console.log("`" + toSearch + "` `" + logic + "` `" + toSearch2 + "`");
 
@@ -106,16 +106,17 @@ todo:
               var lines = data.split("\n");
               for (var i=0; i<lines.length; i++) {
                   var line = lines[i];
+                  var lineLower = line.toLowerCase();
                   var split = line.split("|");
 
                   // [start logic]
                   if (logic == "xor") {
                     // 0. XOR
-                    if (line.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
+                    if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
                       continue;
-                    } else if (line.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+                    } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
                       continue;
-                    } else if (line.match(new RegExp(".*" + toSearch + ".*"))) {
+                    } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -126,7 +127,7 @@ todo:
                     }
                   } else if (logic == "or") {
                     // 1. OR
-                    if (line.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
+                    if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -134,7 +135,7 @@ todo:
                         value = split[1];
                         returnVal += name + " " + value + "<br/>";
                       }
-                    } else if (line.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+                    } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -142,7 +143,7 @@ todo:
                         value = split[1];
                         returnVal += name + " " + value + "<br/>";
                       }
-                    } else if (line.match(new RegExp(".*" + toSearch + ".*"))) {
+                    } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -150,7 +151,7 @@ todo:
                         value = split[1];
                         returnVal += name + " " + value + "<br/>";
                       }
-                    } else if (line.match(new RegExp(".*" + toSearch2 + ".*"))) {
+                    } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -162,7 +163,7 @@ todo:
                   } else if (logic == "and") {
                     // 2. AND
                       }
-                    if (line.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
+                    if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -170,7 +171,7 @@ todo:
                         value = split[1];
                         returnVal += name + " " + value + "<br/>";
                       }
-                    } else if (line.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+                    } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
                       if (split.length == 1) {
                         returnVal += line + "<br/>";
                       } else {
@@ -194,9 +195,6 @@ todo:
         }
       }, 4000);
     });
-
-
-
   </script>
 </body>
 </html>
