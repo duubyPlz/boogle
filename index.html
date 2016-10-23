@@ -91,11 +91,16 @@ todo:
       $('div#display-text').html('&lt;loading... (max 4 secs)&gt;');
 
       // input
-      var toSearch = $('#search1').val().trim().toLowerCase();
-      var logic = $('#logic').val().trim().toLowerCase();
-      var toSearch2 = $('#search2').val().trim().toLowerCase();
+      var toSearchRaw = $('#search1').val().trim().toLowerCase();
+      var logicRaw = $('#logic').val().trim().toLowerCase();
+      var toSearch2Raw = $('#search2').val().trim().toLowerCase();
 
-      console.log("`" + toSearch + "` `" + logic + "` `" + toSearch2 + "`");
+      // sanitise ... >_>
+      var toSearch = toSearchRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n]/, '');
+      var logic = logicRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n]/, '');
+      var toSearch2 = toSearch2Raw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n]/, '');
+
+      // console.log("`" + toSearch + "` `" + logic + "` `" + toSearch2 + "`");
 
       // search
       hash = new Object();
@@ -188,7 +193,6 @@ todo:
       }
 
       setTimeout(function() {
-        console.log('changing returnval');
         $('#display-text').html(returnVal);
         if (returnVal == '') {
           $('#display-text').html("Couldn't be found: \"" + toSearch + "\" " + logic.toUpperCase() + " \"" + toSearch2 + "\".");
