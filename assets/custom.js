@@ -58,8 +58,10 @@ $('#search-btn').on('click', function() {
           if (logic == "xor") {
             // 0. XOR
             if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
+              console.log("skipping: " + line);
               continue;
             } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+              console.log("skipping: " + line);
               continue;
             } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))) {
               results += addToResults(line);
