@@ -5,10 +5,11 @@ body {
 }
 
 .row {
-  padding-top: 50px;
-  width: 800px;
+  margin-top: 50px;
+  padding: 0;
+  width: 600px;
   position: relative;
-  left: 100px;
+  /*left: 100px;*/
   margin: auto;
   text-align: center;
 }
@@ -20,4 +21,9 @@ select {
 
 #display-text {
   line-height: 250%;
+}
+
+select#files {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

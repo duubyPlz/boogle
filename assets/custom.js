@@ -1,3 +1,11 @@
+
+var chosenFile = 'hb5.txt';
+var delimiter = '|';
+
+$('select#files').change(function() {
+  chosenFile = $('select#files').val();
+});
+
 $('#search-btn').on('click', function() {
   var results = "";
   $('div#display-text').html('&lt;loading... (max 4 secs)&gt;');
@@ -21,12 +29,29 @@ $('#search-btn').on('click', function() {
   // search
   hash = new Object();
   var fileName = 'hb5.txt';
+
+  // change, but want hardcoded values
+  // instead of leaving file name up to #files' value.
+  if (chosenFile == 'hb5') {
+    fileName = 'hb5.txt';
+    delimiter = '|';
+  } else if (chosenFile == 'cuv-ibs') {
+    fileName = 'cuv-ibs.bt';
+    delimiter = '\t';
+  }
+
   try {
     $.get(fileName, function(data) {
         // Break result into line by line
         var lines = data.split("\n");
         for (var i=0; i<lines.length; i++) {
           var line = lines[i];
+
+          if (line.match(new RegExp("^#"))) {
+            // it's a commented line
+            continue;
+          }
+
           var lineLower = line.toLowerCase();
 
           // [start logic]
@@ -66,7 +91,7 @@ $('#search-btn').on('click', function() {
 });
 
 function addToResults(line) {
-  var split = line.split("|");
+  var split = line.split(delimiter);
   var returnVal = "";
 
   if (split.length == 1) {

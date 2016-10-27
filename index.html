@@ -32,12 +32,16 @@ todo:
   <link href="assets/custom.css" rel="stylesheet">
 </head>
 <body>
+  <select id='files' class='form-control'>
+    <option id='0'>hb5</option>
+    <option id='1'>cuv-ibs</option>
+  </select>
   <div class='row'>
-    <div class='col-sm-3'>
+    <div class='col-md-4'>
       <p>Search 1:</p>
       <textarea id='search1'></textarea>
     </div>
-    <div class='col-sm-3'>
+    <div class='col-md-4'>
       <p>Logic [and|or|xor]:</p>
       <select class='form-control' id='logic'>
         <option value='and'>and</option>
@@ -45,7 +49,7 @@ todo:
         <option value='xor'>xor</option>    
       </select>
     </div>
-    <div class='col-sm-3'>
+    <div class='col-md-4'>
       <p>Search 2:</p>
       <textarea id='search2'></textarea>
     </div>
