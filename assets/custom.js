@@ -57,7 +57,11 @@ $('#search-btn').on('click', function() {
           // [start logic]
           if (logic == "xor") {
             // 0. XOR
-            if (lineLower.match(new RegExp(".*" + toSearch + ".*"))) {
+            if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
+              continue;
+            } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+              continue;
+            } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))) {
               results += addToResults(line);
             }
           } else if (logic == "or") {
