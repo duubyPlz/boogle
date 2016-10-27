@@ -91,14 +91,18 @@ todo:
       $('div#display-text').html('&lt;loading... (max 4 secs)&gt;');
 
       // input
-      var toSearchRaw = $('#search1').val().trim().toLowerCase();
-      var logicRaw = $('#logic').val().trim().toLowerCase();
-      var toSearch2Raw = $('#search2').val().trim().toLowerCase();
+      // var toSearchRaw = $('#search1').val().trim().toLowerCase();
+      // var logicRaw = $('#logic').val().trim().toLowerCase();
+      // var toSearch2Raw = $('#search2').val().trim().toLowerCase();
 
       // sanitise ... >_>
-      var toSearch = toSearchRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
-      var logic = logicRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
-      var toSearch2 = toSearch2Raw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
+      // var toSearch = toSearchRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
+      // var logic = logicRaw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
+      // var toSearch2 = toSearch2Raw.replace(/[^a-zA-Z0-9.¡£¡¢,:£®\n\s]/, '');
+
+      var toSearch = $('#search1').val().trim().toLowerCase();
+      var logic = $('#logic').val().trim().toLowerCase();
+      var toSearch2 = $('#search2').val().trim().toLowerCase();
 
       // console.log("`" + toSearch + "` `" + logic + "` `" + toSearch2 + "`");
 
