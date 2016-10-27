@@ -1,0 +1,23 @@
+body {
+  font-family: 'Lato', sans-serif;
+  /*background-color: #222;*/
+  /*color: #ddd;*/
+}
+
+.row {
+  padding-top: 50px;
+  width: 800px;
+  position: relative;
+  left: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+select {
+  max-width: 100px;
+  margin: auto;
+}
+
+#display-text {
+  line-height: 250%;
+}
