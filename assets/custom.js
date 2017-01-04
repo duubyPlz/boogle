@@ -61,7 +61,8 @@ $('#search-btn').on('click', function() {
               continue;
             } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
               continue;
-            } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))) {
+            } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))
+                    || lineLower.match(new RegExp(".*" + toSearch2 + ".*"))) {
               results += addToResults(line);
             }
           } else if (logic == "or") {
