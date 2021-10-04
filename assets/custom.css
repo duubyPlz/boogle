@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 body {
   font-family: 'Rubik', 'Noto Sans TC', sans-serif;
@@ -34,7 +33,7 @@ body {
 .row {
   margin-top: 50px;
   padding: 0;
-  width: 600px;
+  width: 800px;
   position: relative;
   /*left: 100px;*/
   margin: auto;
@@ -58,4 +57,14 @@ select#files {
 textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
+  min-width: 300px;
+  font-size: 20px;
+  padding: 10px;
 }
+
+#search-btn {
+  padding: 0.9em 1.9em;
+  margin-right: 7em;
+  margin-top: 3em;
+}
+

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+
+.buttons {
+  text-align: center;
+  font-weight: 300;
+  margin: auto;
+  border: none;
+  line-height: calc(1.25rem + 4px);
+  font-size: 20px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  margin-bottom: 20px;
+  margin-right: 10px;
+  color: white;
+}
+
+.buttons:hover, 
+.buttons:focus {
+  color: white;
+  outline: 0;
+}
+
+.buttons.blue {      
+  background-image: linear-gradient(90deg,#3ba5ff,#8f7bff);
+  box-shadow: 0 3px 0 0 #4e89d6, 0 2px 8px 0 #6394ff, 0 4px 10px 0 rgba(33,7,77,.5);
+}
+
+.buttons.blue:hover,
+.buttons.blue:focus {
+  background-image: linear-gradient(90deg,#3ba5ffe9,#8f7bffe9);
+  border-color: transparent;
+}
+
+.buttons.blue:active {
+  background-image: linear-gradient(90deg,#3ba5ff,#8f7bff);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.buttons.green {      
+  background-image: linear-gradient(90deg,#00d9bf,#00d977);
+  box-shadow: 0 3px 0 0 #00bb85, 0 2px 8px 0 #00d99b, 0 4px 10px 0 rgba(33,7,77,.5);
+}
+
+.buttons.green:hover,
+.buttons.green:focus {
+  background-image: linear-gradient(90deg,#24dec8,#24de8a);
+  /*box-shadow: none;*/
+  border-color: transparent;
+}
+
+.buttons.green:active {
+  background-image: linear-gradient(90deg,#00bba5,#0b6);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.buttons.orange {
+  background-image: linear-gradient(90deg,#fc0,#ffa100);
+  box-shadow: 0 3px 0 0 #db9d00, 0 2px 8px 0 #ffb600, 0 4px 10px 0 rgba(33,7,77,.5);
+}
+
+.buttons.orange:hover,
+.buttons.orange:focus {
+  background-image: linear-gradient(90deg,#ffd324,#ffae24);
+}
+
+.buttons.orange:active {
+  background-image: linear-gradient(90deg,#dbaf00,#db8a00);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.buttons.red {
+  background-image: linear-gradient(90deg,#ff38ac,#ff386a);
+  box-shadow: 0 3px 0 0 #db3078, 0 2px 8px 0 #ff388b, 0 4px 10px 0 rgba(33,7,77,.5);
+}
+
+.buttons.red:hover,
+.buttons.red:focus {
+  background-image: linear-gradient(90deg,#ff54b8,#ff547f);
+}
+
+.buttons.red:active {
+  background-image: linear-gradient(90deg,#db3094,#db305b);
+  box-shadow: none;
+  border-color: transparent;
+}
