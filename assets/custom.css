@@ -1,8 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Rubik', 'Noto Sans TC', sans-serif;
   /*background-color: #222;*/
   /*color: #ddd;*/
+  font-size: 16px;
 }
+
+/* start header */
+.header-logo {
+  margin-top: 1.5em;
+  margin-left: 2.5em;
+}
+
+.header-logo img {
+  max-width: 50px;
+  opacity: 0.8;
+}
+
+.header-logo span.title {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  margin-left: 0.5em;
+  font-size: 26px;
+  position: relative;
+  top: 6px;
+  color: rgba(0, 0, 0, 0.4);
+}
+/* end header */
 
 .row {
   margin-top: 50px;

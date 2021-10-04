@@ -25,8 +25,9 @@ todo:
   <script src="bootstrap3/js/bootstrap.js" type="text/javascript"></script>
 
   <!-- Titles -->
-  <link rel="icon" href="http://www.freeiconspng.com/uploads/book-icon-25.png">
-  <title>Search</title>
+  <!-- Icon from: https://www.flaticon.com/premium-icon/reading_3635537 -->
+  <link rel="icon" href="./assets/img/favicon.png">
+  <title>Boogle search</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:100,400" rel="stylesheet">
@@ -35,25 +36,29 @@ todo:
   <link href="assets/custom.css" rel="stylesheet">
 </head>
 <body>
+  <div class='header-logo'>
+    <img src="./assets/img/favicon.png" />
+    <span class='title'>boogle</span>
+  </div>
   <select id='files' class='form-control'>
-    <option id='0'>hb5</option>
-    <option id='1'>cuv-ibs</option>
+    <option id='0' value="cuv-ibs">和合本</option>
+    <option id='1' value="hb5">Big5 版本</option>
   </select>
   <div class='row'>
     <div class='col-md-4'>
-      <p>Search 1:</p>
+      <p>Search 1</p>
       <textarea id='search1'></textarea>
     </div>
     <div class='col-md-4'>
-      <p>Logic [and|or|xor]:</p>
+      <p>Logic [and|or|xor]</p>
       <select class='form-control' id='logic'>
-        <option value='and'>and</option>
         <option value='or'>or</option>
+        <option value='and'>and</option>
         <option value='xor'>xor</option>    
       </select>
     </div>
     <div class='col-md-4'>
-      <p>Search 2:</p>
+      <p>Search 2</p>
       <textarea id='search2'></textarea>
     </div>
   </div>
