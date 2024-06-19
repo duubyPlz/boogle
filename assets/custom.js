@@ -1,14 +1,15 @@
-
 var chosenFile = 'hb5.txt';
 var delimiter = '|';
 
-$('select#files').change(function() {
+$('select#files').change(function () {
   chosenFile = $('select#files').val();
 });
 
-$('#search-btn').on('click', function() {
-  var results = "";
-  $('div#display-text').html('&lt;loading... (max 4 secs)&gt;');
+$('#search-btn').on('click', function () {
+  var results = '';
+  $('div#display-text').html(
+    '&lt;loading... (max 4 secs)&gt;',
+  );
 
   // input
   // var toSearchRaw = $('#search1').val().trim().toLowerCase();
@@ -20,9 +21,18 @@ $('#search-btn').on('click', function() {
   // var logic = logicRaw.replace(/[^a-zA-Z0-9.。、,:．\n\s]/, '');
   // var toSearch2 = toSearch2Raw.replace(/[^a-zA-Z0-9.。、,:．\n\s]/, '');
 
-  var toSearch = $('#search1').val().trim().toLowerCase();
-  var logic = $('#logic').val().trim().toLowerCase();
-  var toSearch2 = $('#search2').val().trim().toLowerCase();
+  var toSearch = $('#search1')
+    .val()
+    .trim()
+    .toLowerCase();
+  var logic = $('#logic')
+    .val()
+    .trim()
+    .toLowerCase();
+  var toSearch2 = $('#search2')
+    .val()
+    .trim()
+    .toLowerCase();
 
   // console.log("`" + toSearch + "` `" + logic + "` `" + toSearch2 + "`");
 
@@ -41,13 +51,15 @@ $('#search-btn').on('click', function() {
   }
 
   try {
-    $.get(fileName, function(data) {
+    $.get(
+      fileName,
+      function (data) {
         // Break result into line by line
-        var lines = data.split("\n");
-        for (var i=0; i<lines.length; i++) {
+        var lines = data.split('\n');
+        for (var i = 0; i < lines.length; i++) {
           var line = lines[i];
 
-          if (line.match(new RegExp("^#"))) {
+          if (line.match(new RegExp('^#'))) {
             // it's a commented line
             continue;
           }
@@ -55,56 +67,156 @@ $('#search-btn').on('click', function() {
           var lineLower = line.toLowerCase();
 
           // [start logic]
-          if (logic == "xor") {
+          if (logic == 'xor') {
             // 0. XOR
-            if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))) {
+            if (
+              lineLower.match(
+                new RegExp(
+                  '.*' +
+                    toSearch +
+                    '.*' +
+                    toSearch2 +
+                    '.*',
+                ),
+              )
+            ) {
               continue;
-            } else if (lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+            } else if (
+              lineLower.match(
+                new RegExp(
+                  '.*' +
+                    toSearch2 +
+                    '.*' +
+                    toSearch +
+                    '.*',
+                ),
+              )
+            ) {
               continue;
-            } else if (lineLower.match(new RegExp(".*" + toSearch + ".*"))
-                    || lineLower.match(new RegExp(".*" + toSearch2 + ".*"))) {
+            } else if (
+              lineLower.match(
+                new RegExp(
+                  '.*' + toSearch + '.*',
+                ),
+              ) ||
+              lineLower.match(
+                new RegExp(
+                  '.*' + toSearch2 + '.*',
+                ),
+              )
+            ) {
               results += addToResults(line);
             }
-          } else if (logic == "or") {
+          } else if (logic == 'or') {
             // 1. OR
-            if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))
-             || lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))
-             || lineLower.match(new RegExp(".*" + toSearch + ".*"))
-             || lineLower.match(new RegExp(".*" + toSearch2 + ".*"))) {
+            if (
+              lineLower.match(
+                new RegExp(
+                  '.*' +
+                    toSearch +
+                    '.*' +
+                    toSearch2 +
+                    '.*',
+                ),
+              ) ||
+              lineLower.match(
+                new RegExp(
+                  '.*' +
+                    toSearch2 +
+                    '.*' +
+                    toSearch +
+                    '.*',
+                ),
+              ) ||
+              lineLower.match(
+                new RegExp(
+                  '.*' + toSearch + '.*',
+                ),
+              ) ||
+              lineLower.match(
+                new RegExp(
+                  '.*' + toSearch2 + '.*',
+                ),
+              )
+            ) {
               results += addToResults(line);
             }
-          } else if (logic == "and") {
+          } else if (logic == 'and') {
             // 2. AND
-            if (lineLower.match(new RegExp(".*" + toSearch + ".*" + toSearch2 + ".*"))
-             || lineLower.match(new RegExp(".*" + toSearch2 + ".*" + toSearch + ".*"))) {
+            if (
+              lineLower.match(
+                new RegExp(
+                  '.*' +
+                    toSearch +
+                    '.*' +
+                    toSearch2 +
+                    '.*',
+                ),
+              ) ||
+              lineLower.match(
+                new RegExp(
+                  '.*' +
+                    toSearch2 +
+                    '.*' +
+                    toSearch +
+                    '.*',
+                ),
+              )
+            ) {
+              results += addToResults(line);
+            }
+          } else if (logic == 'not') {
+            // 3. AND NOT
+            if (
+              lineLower.match(
+                new RegExp(
+                  '.*' + toSearch + '.*',
+                ),
+              ) &&
+              !lineLower.match(
+                new RegExp(
+                  '.*' + toSearch2 + '.*',
+                ),
+              )
+            ) {
               results += addToResults(line);
             }
             // [end logic]
           }
         }
-    }, 'text');
+      },
+      'text',
+    );
   } catch (e) {
     console.warn(e);
   }
 
-  setTimeout(function() {
+  setTimeout(function () {
     $('#display-text').html(results);
     if (results == '') {
-      $('#display-text').html("Couldn't be found: \"" + toSearch + "\" " + logic.toUpperCase() + " \"" + toSearch2 + "\".");
+      $('#display-text').html(
+        'Couldn\'t be found: "' +
+          toSearch +
+          '" ' +
+          logic.toUpperCase() +
+          ' "' +
+          toSearch2 +
+          '".',
+      );
     }
   }, 4000);
 });
 
 function addToResults(line) {
   var split = line.split(delimiter);
-  var returnVal = "";
+  var returnVal = '';
 
   if (split.length == 1) {
-    returnVal = line + "<br/>";
+    returnVal = line + '<br/>';
   } else {
     name = split[0];
     value = split[1];
-    returnVal = name + " " + value + "<br/>";
+    returnVal = name + ' ' + value + '<br/>';
   }
 
   return returnVal;
